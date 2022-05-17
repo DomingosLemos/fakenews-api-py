@@ -150,11 +150,45 @@ Os campos lidos são:
 
 ### Executar o projeto:
 
-Não há uma solução única de fazer upload do código no com o Github ou Heroku, ou testar o bot dentro do Dialogflow ou numa página web. Por isso, irei mostrar a minha forma de preparar e executar o projeto.
-
 #### Github e Github Desktop
 
-Começo por criar o projeto em Github e depois 
+Começo por criar o projeto em Github e depois ir a "Code" e escolher "Open with GitHub Desktop". No seu caso, deverá clonar o projeto 
+
+<img width="264" alt="github" src="https://user-images.githubusercontent.com/76813386/168889444-c58b0001-fdef-41c9-85c8-c38cdfcdb2e7.PNG">
+
+Isto vai abrir projeto na aplicação no seu PC.
+
+<img width="814" alt="githubdesk" src="https://user-images.githubusercontent.com/76813386/168889538-da76a607-e3c3-4fca-92be-cc7f6a28289e.PNG">
+
+Depois basta carregar o botão "Open in Visual Studio Code" para abrir o Visual Studio com o projeto.
+
+Para sincronizar o código com o branch principal, basta ir ao Github Desktop e fazer "Commit to main". A lista de ficheiros alterados aparece na parte de cima, e as diferenças em relação ao último commit encontram-se no lado direito.
+
+<img width="407" alt="githubdesk_commit" src="https://user-images.githubusercontent.com/76813386/168890631-781abdaf-347a-4c75-8c75-e0e4648ead15.PNG">
+
+
+#### Testar Código Python
+
+Em qualquer projeto python é sempre recomendado criar um ambiente isolado a que chamamos de environment. Com a evolução das versões do python, assim como das livrarias, se não criar um ambiente para o projeto corre sérios riscos que o mesmo não consiga funcionar daqui a algum tempo. Isto deve-se a faltas de compatibilidade entre versões.
+
+Todo o código que vou apresentar deverá ser executado na linha de comando, no caso do Windows (cmd).
+
+Criar um environment python na pasta à sua escolha (normalmente crio uma pasta de projeto e dentro coloco uma pasta com o código. Na pasta pai é onde crio o environment, uma vez que ele vai criar um conjunto de pastas que não fazem parte do projeto)
+
+> <b>C:\></b>python -m venv c:\path\to\myenv
+
+Aceder à pasta
+
+> C:\>cd c:\path\to\myenv
+
+Iniciar o environment
+
+> C:\path\to\myenv>Scripts\activate.bat
+
+
+#### Heroku
+
+Para fazer deploy no heroku, deverá ter uma conta já criada (não tem custos) e executar os 
 ## Bibliografia
 
 
