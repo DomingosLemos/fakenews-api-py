@@ -175,21 +175,79 @@ Todo o código que vou apresentar deverá ser executado na linha de comando, no 
 
 Criar um environment python na pasta à sua escolha (normalmente crio uma pasta de projeto e dentro coloco uma pasta com o código. Na pasta pai é onde crio o environment, uma vez que ele vai criar um conjunto de pastas que não fazem parte do projeto)
 
-> <b>C:\></b>python -m venv c:\path\to\myenv
+> <b>C:\\></b>python -m venv c:\path\to\myenv
 
 Aceder à pasta
 
-> C:\>cd c:\path\to\myenv
+> <b>C:\\></b>cd c:\path\to\myenv
 
 Iniciar o environment
 
-> C:\path\to\myenv>Scripts\activate.bat
+> <b>C:\path\to\myenv></b>Scripts\activate.bat
+
+Para executar o código python
+
+> <b>(myenv) C:\path\to\myenv></b>python app.py
+
+Para instalar alguma biblioteca em falta (exemplo pandas) dentro do environment
+
+> <b>(myenv) C:\path\to\myenv></b>pip install pandas
 
 
 #### Heroku
 
-Para fazer deploy no heroku, deverá ter uma conta já criada (não tem custos) e executar os 
+Para fazer deploy no heroku, deverá ter uma conta já criada (não tem custos).
+Eu utilizo os seguintes comandos via command line do windows. (nota: Estou a dar aqui nomes de pastas fictícios, que deverá adaptar para os nomes da sua escolha)
+
+Para trabalhar com o heroku, deverá instalar o "Heroku Cli":
+
+<img width="521" alt="Heroku" src="https://user-images.githubusercontent.com/76813386/168910066-8df13740-62ed-460d-a4f6-78a5d1e00e32.PNG">
+
+Fazer login e criar um apontador para o projeto no heroku
+
+> <b>(myenv) C:\path\to\myenv></b>cd myproject
+> <b>(myenv) C:\path\to\myenv\myproject></b>"C:\Program Files\heroku\bin\heroku" login
+> <b>(myenv) C:\path\to\myenv\myproject></b>"C:\Program Files\heroku\bin\heroku" git:remote -a pyproject
+
+Fazer o deploy do novo código
+
+> <b>(myenv) C:\path\to\myenv\myproject></b>git add .
+> <b>(myenv) C:\path\to\myenv\myproject></b>git commit -am "make it better"
+> <b>(myenv) C:\path\to\myenv\myproject></b>git push heroku master
+
+O último comando vai apagar o conteúdo do projeto na web e recrear novamente.
+O heroku funciona à base de kubernetes, ou seja, cria uma sala isolada onde vai conter o seu código e vai instalar o python como todas as livrarias que indicar no ficheiro "requirements.txt". Quando o código for executado, a sala deve ter todo o ambiente necessário.
+
+Para fins de debug pode aceder ao logo do seu projeto. Todos os prints que tenha realizado no código serão enviados para o log.
+
+> <b>(myenv) C:\path\to\myenv\myproject></b>"C:\Program Files\heroku\bin\heroku" logs --tail
+
+
+Não é necessário indicar o caminho onde o Heroku está instalado ou ter esse caminho na path do windows e nesse caso, não será necessário indicar na linha de comando no exemplos anteriores
+
+#### Dialogflow
+
+Para poder testar a API num ambiente chatbot, usei o Dialogflow Essential.
+
+Ao fazer login, deverá criar um novo agente. Adicionar no fulfillment o URL do seu projeto dado pelo Heroku. Por fim adicionar uma intent que recebe uma determinada frase e adicionar um parâmetro obrigatório chamado URL para receber o link.
+
+<img width="465" alt="DF" src="https://user-images.githubusercontent.com/76813386/168911432-c9883213-d81a-4620-a98e-d748c413b387.PNG">
+
+Como teste normalmente vou a "Integrations", escolho "Dialogflow Messenger" e por fim faço "TRY IT NOW".
+
+So simple, like that ;)
+
 ## Bibliografia
 
+Documentação do Dialogflow ES: <br>
+https://cloud.google.com/dialogflow/es/docs/intents-rich-messages
 
+Criação de environment: <br>
+https://docs.python.org/3/tutorial/venv.html
+
+Bibliotecas de Python: <br>
+https://realpython.com/beautiful-soup-web-scraper-python/
+https://medium.com/@cmukesh8688/tf-idf-vectorizer-scikit-learn-dbc0244a911a
+https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.PassiveAggressiveClassifier.html
+https://romik-kelesh.medium.com/how-to-deploy-a-python-web-scraper-with-selenium-on-heroku-1459cb3ac76c
 
