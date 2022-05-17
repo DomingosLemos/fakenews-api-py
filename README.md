@@ -6,14 +6,15 @@ Todo o código aqui apresentado serviu como parte integrante de um projeto final
 
 O tema do projeto consiste na criação de um chatbot de auxilio no combate às Fakenews, por forma a contribuir para esta causa.
 
-Um dos muitos temas que o chatbot vai responder é a capacidade de avaliar se uma notícia é verdadeira ou falsa, recorrendo à Inteligência Artifical. É neste ponto que entra esta API realizada em Python.
+Um dos muitos temas que o chatbot vai responder é a capacidade de avaliar se uma notícia é verdadeira ou falsa, recorrendo à Inteligência Artifical. É neste ponto que entra esta API, realizada em Python.
 
-O projeto vai ser criado em Dialogflow, que irá usar o webhook para detetar fakenews de forma inteligente, e é aqui que entra a API. 
+O projeto final vai ser tescriadotado em Dialogflow, que irá usar o webhook para detetar fakenews de forma inteligente, e é aqui que entra a API. 
 
 ## Objetivo
 
-O desafio foi criar uma API que fosse chamada pelo chatbot para detectar se uma determinada notícia, dada por um URL, é verdadeira ou não.
-um segundo desafio era fazer o código e disponibilizar na cloud ser qualquer custo, até porque é um projeto académico. Para tal foram apenas usadas ferramentas open source, como será descrito mais à frente.
+O desafio é criar uma API que seja chamada pelo chatbot para detectar se uma determinada notícia, dada por um URL, é verdadeira ou não.
+
+Um segundo desafio é fazer o código e disponibilizar na cloud ser qualquer custo, até porque é um projeto académico. Para tal foram apenas usadas ferramentas open source, como será descrito mais à frente.
 
 ## Grupo de trabalho
 
@@ -32,8 +33,8 @@ E a nossa mentora de projeto: [Ariana de Souza](https://www.linkedin.com/in/aria
 ## Pressupostos/limitações
 
 Esta API tem as seguintes limitações:
-* Apenas responde à língua pt-br
-* O dataset usado para o modelo incluí duas categorias: política e saúde
+* Apenas está preparado para responder à língua pt-br
+* O dataset usado para o modelo incluí seis categorias, mas as mais bem representadas são política e saúde
 * Só aceita URL de sites de notícias em formato texto. (imagens, som e vídeos não estão contemplados)
 * O Dialogflow como canal não permite entrada pelo user maior que 256 caracteres, por isso a única forma de validar uma notícia é por ULR
 * O tempo de espera de resposta de uma chamada a API pelo Dialogflow é de 5 segundos. Para ler a notícia de um site é necessário aceder ao mesmo e verificámos que alguns tiveram uma resposta superior a 5 segundos. Neste caso, apesar a API responder, o DF não tem em conta essa resposta.
@@ -46,17 +47,18 @@ Alguns pressupostos a considerar:
 
 A lista de ferramentas usadas, para a construção desta API, são todas open source. Este foi um ponto assente na nossa escolha.
 
-* Github e Github Desktop: para gestão do código
-* Jupyter Notebook: para exploração preparação do dataset e construção e validação do modelo. Também foi usado na preparação do scraping.
-* Visual Studio IDE: uma ferramenta da Microsoft que ajuda muito na construção do código.
-* Heroku: plataforma para deploy do projeto na nuvem
-* Dialogflow essencial: para testar a chamada da API em ambiente chatbot
-* Python: linguagem de programação usada
+* <b>Github</b> e <b>Github Desktop</b>: para gestão do código
+* <b>Jupyter Notebook</b>: para exploração preparação do dataset e construção e validação do modelo. Também foi usado na preparação do scraping.
+* <b>Visual Studio IDE</b>: uma ferramenta da Microsoft que ajuda muito na construção do código.
+* <b>Heroku</b>: plataforma para deploy do projeto na nuvem
+* <b>Dialogflow Essencial</b>: para testar a chamada da API em ambiente chatbot
+* <b>Python</b>: linguagem de programação usada
 
 ## Roadmap
 
-Aumentar as categorias treinadas<br>
-Passar a aceitar mensagens de voz <br>
+Esperamos poder vir a fazer no futuro as seguintes melhorias:<br>
+* Aumentar as categorias treinadas<br>
+* Passar a aceitar mensagens de voz <br>
 
 ## Estrutura/setup do projecto
 
@@ -66,8 +68,7 @@ Os próximos capítulos vão ajudar a compreender melhor o que está feito, não
 
 ### Setup
 
-Para ver os notebooks que auxiliaram na preparação do código final, será necessário instalá-lo. Caso já o tenha, não será necessário fazer nada. <br> 
-Pode recorrer a duas fontes: <br>
+Para ver os notebooks que auxiliaram na preparação do código final, será necessário instalá-lo. Caso já o tenha, não será necessário fazer nada. Pode recorrer a duas fontes: <br>
 * Instalar apenas o jupyter notebook clássico (https://jupyter.org/) 
 * Instalar através do Anaconda, que é muito usado pelos Data Science (https://www.anaconda.com/)
 
@@ -77,9 +78,9 @@ Vai ser necessário ter o [Python](https://www.python.org/) instalado no PC. Cas
 
 Será necessário criar uma conta no [Github](https://github.com/), para poder clonar o código do projeto para o seu PC.
 
-Terá que criar uma conta no [Heroku](https://www.heroku.com/) para fazer o deploy do código na web. Pode arranjar outras soluções como virtualização na cloud dos grandes players, mas no Heroku pode fazer deploy de até 5 projetos de forma gratuíta.
+Terá que criar uma conta no [Heroku](https://www.heroku.com/) para fazer o deploy do código na web. Pode arranjar outras soluções como virtualização na cloud dos grandes players, mas no Heroku pode fazer deploy de até 5 projetos de forma totalmente gratuíta.
 
-A criação de conta no [Dialogflow Essentials](https://dialogflow.cloud.google.com/) não será obrigatório, mas simplifica muito na experimentação da api já na vertente do chatbot. Foi por essa razão que usei, mas pode sempre usar outras ferramentas como o Postman ou o SoapUI.
+A criação de conta no [Dialogflow Essentials](https://dialogflow.cloud.google.com/) não será obrigatório, mas simplifica muito na experimentação da api já na vertente do chatbot. Foi por essa razão que usei, mas pode sempre usar outras ferramentas como por exemplo o Postman ou o SoapUI.
 
 ### API do webhook
 
@@ -93,11 +94,11 @@ O projeto está dividido em dois grandes blocos de código, uma para fazer scrap
 
 | Ficheiro | Descrição |
 | -------- | --------- |
-| app.py | ficheiro principal que recebe as chamadas externas e procede de acordo com o pedido |
+| app.py | Ficheiro principal que recebe as chamadas externas e procede de acordo com o pedido |
 | predict.py | Lê os dados, prepara-os e constroi o modelo. Tem também as funções necessárias para analizar o conteúdo da notícia |
 | scraping_noticia.py | Serve para interpretar e recolher algum conteúdo de uma página web, tal como o título, a notíca, o autor e a data da notícia | 
 | FakeRecogna.xlsx | Ficheiro disponibilizado na web (ver em referências o link) com o dataset classificativo de ~12k notícias | 
-| Prepare_data_and_model.ipynb | Ficheiro com o código de preparação do modelo. Não é ficheiro de texto standard e deve ser aberto pelo Jupyter Notebook |
+| Prepare_data_and_model.ipynb | Ficheiro com o código de preparação do modelo. Não é ficheiro de texto standard e pode ser aberto pelo Jupyter Notebook |
 | GetBodyURL.ipynb | Mais um ficheiro de auxilio na parte de scraping |
 
 ### Módulos
@@ -110,13 +111,14 @@ Vou explicar alguns pontos do código, embora os mesmos estejam bem documentados
 Para o python funcionar com web usei a library "flask".<br>
 Apenas tem duas rotas desenvolvidas, a route (/) e a fakenews (/fakenews)
 
+Serve apenas para informar que o serviço está ativo.
+
 > @app.route("/", methods=["GET"])
 
-Que serve apenas para informar que o serviço está ativo.
+Este bloco é o detector de fakes (action == 'predict")<br>
 
 > @app.route('/fakenews', methods=['POST'])
 
-Este bloco é o detector de fakes (action == 'predict")<br>
 A primeira etapa é validar que o URL foi passado. Depois valida o mesmo com uma pequena base de conhecimento de sites confiáveis/fakes e se for encontrado na bd responde de acordo com a informação que tem.<br>
 Por último, faz a interpretação do site e leitura dos campos necessários que são passados à função centrar da previsão (predict.valid_url)<br>
 
@@ -124,6 +126,7 @@ Por último, faz a interpretação do site e leitura dos campos necessários que
 
 Começa por ler o dataset para um dataframe, prepara e treina o modelo (usado  modelo PassiveAggressive do sklearn).<br>
 A função central para validar uma notícia é o "valid_url". Dentro deste tem todas as regras de validação e é de onde saí o resultado para trás.<br>
+
 Regras:<br>
 * valida se o autor é confiável.
 * se não for, valida o ano da notícia >= 2019
@@ -131,8 +134,9 @@ Regras:<br>
 * se não foi conclusívo, vai validar o titulo
      
 O processo de validação pode terminar em qualquer ponto, caso a regra seja cumprida. <br>
+
 Pontos a reter:<br>
-* os títulos so são considerados se o comprimento > 50 caracteres
+* os títulos só são considerados se o comprimento > 50 caracteres
 * só considera a data se no mesmo existir um número com 4 digitos (correspondente ao Ano)
 
 
@@ -143,7 +147,7 @@ Os campos lidos são:
 | campo | descrição | regra |
 | ----- | --------- | ----- |
 | titulo | o título | devolve o valor da tag "title" |
-| autor | o autor | procura a palavra "uthor" dentro do vlor do atributo "class" de qualquer tag |
+| autor | o autor | procura a palavra "uthor" dentro do valor do atributo "class" de qualquer tag |
 | dt | data da notícia (texto) | Muitas vezes a data vem no texto do autor. É usado regular expression para capturar a data, apesar de que apenas é pretendido o ano | 
 | body | corpo da notícia | procura os primeiros 3 tag "p" (de parágrafo) com comprimento > 150 caracteres | 
 
@@ -197,7 +201,7 @@ Para instalar alguma biblioteca em falta (exemplo pandas) dentro do environment
 #### Heroku
 
 Para fazer deploy no heroku, deverá ter uma conta já criada (não tem custos).
-Eu utilizo os seguintes comandos via command line do windows. (nota: Estou a dar aqui nomes de pastas fictícios, que deverá adaptar para os nomes da sua escolha)
+Eu utilizo os seguintes comandos via command line do windows. (nota: Estou a dar aqui nomes de pastas fictícios, que deverá adaptar para os nomes à sua escolha)
 
 Para trabalhar com o heroku, deverá instalar o "Heroku Cli":
 
@@ -205,17 +209,17 @@ Para trabalhar com o heroku, deverá instalar o "Heroku Cli":
 
 Fazer login e criar um apontador para o projeto no heroku
 
-> <b>(myenv) C:\path\to\myenv></b>cd myproject
-> <b>(myenv) C:\path\to\myenv\myproject></b>"C:\Program Files\heroku\bin\heroku" login
-> <b>(myenv) C:\path\to\myenv\myproject></b>"C:\Program Files\heroku\bin\heroku" git:remote -a pyproject
+> <b>(myenv) C:\path\to\myenv></b>cd myproject <br>
+> <b>(myenv) C:\path\to\myenv\myproject></b>"C:\Program Files\heroku\bin\heroku" login <br>
+> <b>(myenv) C:\path\to\myenv\myproject></b>"C:\Program Files\heroku\bin\heroku" git:remote -a pyproject <br>
 
 Fazer o deploy do novo código
 
-> <b>(myenv) C:\path\to\myenv\myproject></b>git add .
-> <b>(myenv) C:\path\to\myenv\myproject></b>git commit -am "make it better"
-> <b>(myenv) C:\path\to\myenv\myproject></b>git push heroku master
+> <b>(myenv) C:\path\to\myenv\myproject></b>git add . <br>
+> <b>(myenv) C:\path\to\myenv\myproject></b>git commit -am "make it better" <br>
+> <b>(myenv) C:\path\to\myenv\myproject></b>git push heroku master <br>
 
-O último comando vai apagar o conteúdo do projeto na web e recrear novamente.
+O último comando vai apagar o conteúdo do projeto na web e recriar novamente. <br>
 O heroku funciona à base de kubernetes, ou seja, cria uma sala isolada onde vai conter o seu código e vai instalar o python como todas as livrarias que indicar no ficheiro "requirements.txt". Quando o código for executado, a sala deve ter todo o ambiente necessário.
 
 Para fins de debug pode aceder ao logo do seu projeto. Todos os prints que tenha realizado no código serão enviados para o log.
@@ -223,13 +227,13 @@ Para fins de debug pode aceder ao logo do seu projeto. Todos os prints que tenha
 > <b>(myenv) C:\path\to\myenv\myproject></b>"C:\Program Files\heroku\bin\heroku" logs --tail
 
 
-Não é necessário indicar o caminho onde o Heroku está instalado ou ter esse caminho na path do windows e nesse caso, não será necessário indicar na linha de comando no exemplos anteriores
+Não é necessário indicar o caminho onde o Heroku está instalado, caso prefire pode ter esse caminho na path do windows e nesse caso, não será necessário indicar na linha de comando no exemplos anteriores
 
 #### Dialogflow
 
 Para poder testar a API num ambiente chatbot, usei o Dialogflow Essential.
 
-Ao fazer login, deverá criar um novo agente. Adicionar no fulfillment o URL do seu projeto dado pelo Heroku. Por fim adicionar uma intent que recebe uma determinada frase e adicionar um parâmetro obrigatório chamado URL para receber o link.
+Ao fazer login, deverá criar um novo agente. Adicionar no fulfillment o URL do seu projeto dado pelo Heroku. Por fim adicionar uma intent que receba uma frase à sua escolha e adicionar um parâmetro obrigatório chamado URL para receber o link.
 
 <img width="465" alt="DF" src="https://user-images.githubusercontent.com/76813386/168911432-c9883213-d81a-4620-a98e-d748c413b387.PNG">
 
@@ -245,9 +249,18 @@ https://cloud.google.com/dialogflow/es/docs/intents-rich-messages
 Criação de environment: <br>
 https://docs.python.org/3/tutorial/venv.html
 
-Bibliotecas de Python: <br>
-https://realpython.com/beautiful-soup-web-scraper-python/
-https://medium.com/@cmukesh8688/tf-idf-vectorizer-scikit-learn-dbc0244a911a
-https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.PassiveAggressiveClassifier.html
-https://romik-kelesh.medium.com/how-to-deploy-a-python-web-scraper-with-selenium-on-heroku-1459cb3ac76c
+Scrapping with Python: <br>
+https://realpython.com/beautiful-soup-web-scraper-python/ <br>
+
+Algoritmo tf-idf-vectorizer: <br>
+https://medium.com/@cmukesh8688/tf-idf-vectorizer-scikit-learn-dbc0244a911a <br>
+
+Modelo PassiveAggressiveClassifier: <br>
+https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.PassiveAggressiveClassifier.html <br>
+
+Como fazer scraping dentro do Heroku: <br>
+https://romik-kelesh.medium.com/how-to-deploy-a-python-web-scraper-with-selenium-on-heroku-1459cb3ac76c <br>
+
+Fonte do dataset usado: <br>
+https://github.com/Gabriel-Lino-Garcia/FakeRecogna <br>
 
