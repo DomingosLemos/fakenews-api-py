@@ -150,7 +150,11 @@ Os campos lidos são:
 
 ### Executar o projeto:
 
+Não há uma solução única de fazer upload do código no com o Github ou Heroku, ou testar o bot dentro do Dialogflow ou numa página web. Por isso, irei mostrar a minha forma de preparar e executar o projeto.
 
+#### Github e Github Desktop
+
+Começo por criar o projeto em Github e depois 
 ## Bibliografia
 
 
