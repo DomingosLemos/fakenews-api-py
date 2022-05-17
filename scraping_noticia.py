@@ -4,8 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 import re
 import os
-#from selenium.webdriver.firefox.options import Options
-#from selenium.common.exceptions import NoSuchElementException
+
 
 def read_url(url):
 

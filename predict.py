@@ -4,7 +4,6 @@ from urllib.parse import urlparse
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import PassiveAggressiveClassifier
-import sqlite3
 import time
 from datetime import datetime, timedelta
 
@@ -218,65 +217,3 @@ def valid_url(title, autor, data, body):
 
     return msg
 
-##########################################################
-# funções que trabalham uma BD SQLite3 do próprio Heroku
-##########################################################
-def create_DB(db_file):
-    conn = None
-    conn = sqlite3.connect(db_file)
-    return conn
-
-def select_MSG(conn, session_id):
-    cur = conn.cursor()
-    cur.execute("SELECT session_id, msg FROM tasks WHERE session_id=?", (session_id,))
-    msg = ""
-
-    rows = cur.fetchall()
-
-    for row in rows:
-        print(row)
-        msg = row[1]
-    cur.close()
-    return msg 
-
-def create_task_table(conn):
-    cur = conn.cursor()
-    table = """CREATE TABLE IF NOT EXISTS tasks (
-                session_id   TEXT PRIMARY KEY,
-                msg TEXT    NULL
-            ); """
-    cur.execute(table)
-    cur.close()
-
-def insert_task_table(conn, session_id, msg):
-    cur = conn.cursor()
-    sql = """INSERT INTO tasks (session_id, msg)
-             VALUES (?, ?)
-        """
-    params = (session_id, msg)
-    cur.execute(sql, params)
-    conn.commit()
-    cur.close()
-
-def update_task_table(conn, session_id, msg):
-    cur = conn.cursor()
-    sql = """REPLACE INTO tasks (session_id, msg)
-             VALUES (?, ?)
-        """
-    params = (session_id, msg)
-    cur.execute(sql, params)
-    conn.commit()
-    cur.close()
-
-def delete_task_table(conn, session_id, msg):
-    cur = conn.cursor()
-    sql = """DELETE FROM tasks 
-             WHERE session_id = ?
-        """
-    params = (session_id,)
-    cur.execute(sql, params)
-    conn.commit()
-    cur.close()
-
-def close_connection(conn):
-    conn.close()
