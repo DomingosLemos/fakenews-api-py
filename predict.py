@@ -174,7 +174,7 @@ def valid_url(title, autor, data, body):
 
     if v_autor == 1:
         # autor credível
-        msg = "Tudo me leva a crer que a notícia seja verdadeira, mas pode..."
+        msg = "Provavelmente a notícia é verdadeira, mas cheque os demais dados da matéria."
     else:
         v_data =  valid_data(data)
         
@@ -184,7 +184,7 @@ def valid_url(title, autor, data, body):
 
         if v_data == 0:
             # data antiga
-            msg = "Infelizmente essa notícia já é antiga e não consigo validar, mas aconcelho a..."
+            msg = "Infelizmente não consigo analisar essa notícia porque não é atual, mas cheque os demais dados da matéria."
         else:
             v_body = valid_text(body)
 
@@ -194,10 +194,10 @@ def valid_url(title, autor, data, body):
 
             if v_body == 1:
                 # notícia credível
-                msg = "A notícia parece ser de verdadeira, mas deverá ..."
+                msg = "A notícia parece ser de verdadeira, mas cheque os demais dados da matéria."
             elif v_body == 0:
                 # fake news
-                msg = "Há fortes indícios que aponta para uma notícia falsa, mas deverá ..."
+                msg = "Há fortes indícios de que seja uma notícia falsa, mas cheque os demais dados da matéria."
             else:
                 v_title = valid_text(title)
 
@@ -207,13 +207,13 @@ def valid_url(title, autor, data, body):
 
                 if v_body == 1:
                     # notícia credível
-                    msg = "A notícia tem todos os atributos para crer que seja verdadeira, o entanto ..."
+                    msg = "A notícia tem todas as qualidades para ser verdadeira, mas cheque os demais dados da matéria. "
                 elif v_body == 0:
                     # fake news
-                    msg = "Tudo leva a crer que a notícia seja falsa, no entanto recomendo ..."
+                    msg = "Tudo leva a crer que a notícia seja falsa, no entanto recomendo que você verifique os demais dados da matéria."
                 else:
                     # inconclusivo
-                    msg = "A informação não permitiu perceber se é fake ou real. Aconselhos antes de compartilhar, que leia a notícia completa, analise se o conteúdo do texto está relatando um fato ou não, se tem autor/responsabilidade e a data na publicação."
+                    msg = "A informação não permitiu perceber se é fake ou real. Aconselho, antes de compartilhar, que leia a notícia completa, analise se o conteúdo do texto está relatando um fato ou não, se tem autor/responsabilidade e a data na publicação. Quer saber mais? Escreva sua dúvida aqui."
 
     return msg
 

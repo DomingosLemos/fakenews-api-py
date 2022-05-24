@@ -53,9 +53,9 @@ def fakenews():
             print('URL dominio (1=verdade, 0=fake, -1=não sabe', res_dominio)
 
             if (res_dominio == 1):
-                msg = "A fonte da notícia parece ser credível, mas poderá ..."
+                msg = "A fonte da notícia parece ser confiável, mas recomendo que busque a mesma matéria em outras fontes também."
             elif (res_dominio == 0):
-                msg = "A fonte da notícia vem de um fonte de fakenews já validada por profissonais de jornalísmo"
+                msg = "A notícia já foi comprovada que é falsa."
             else:
                 #Necessário entrar dentro da notícia
                 title, autor, data, body = scraping_noticia.read_url(request_url)
