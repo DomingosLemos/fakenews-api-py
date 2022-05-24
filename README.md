@@ -220,7 +220,7 @@ Fazer o deploy do novo código
 > <b>(myenv) C:\path\to\myenv\myproject></b>git push heroku master <br>
 
 O último comando vai apagar o conteúdo do projeto na web e recriar novamente. <br>
-O heroku funciona à base de kubernetes, ou seja, cria uma sala isolada onde vai conter o seu código e vai instalar o python como todas as livrarias que indicar no ficheiro "requirements.txt". Quando o código for executado, a sala deve ter todo o ambiente necessário.
+O heroku funciona à base de kubernetes, ou seja, cria uma sala isolada onde vai conter o seu código e vai instalar o python como todas as livrarias que indicar no ficheiro "requirements.txt". Quando o código for executado, a sala deve ter todo o ambiente necessário. 
 
 Para fins de debug pode aceder ao logo do seu projeto. Todos os prints que tenha realizado no código serão enviados para o log.
 
